@@ -8,6 +8,8 @@ It allows to define and manage multiple AWS integrations within Spacelift, facil
 
 This module replaces the deprecated `spacelift_aws_role` resource and [is recommended](https://registry.terraform.io/providers/spacelift-io/spacelift/latest/docs/resources/aws_role) for use instead.
 
+Before creating the Spacelift AWS integration, _you need to have an AWS IAM Role_ within your AWS account that the cloud integration will use.
+
 ## Usage
 
 Here’s an example of how to use this module in your Terraform configuration:
@@ -15,20 +17,22 @@ Here’s an example of how to use this module in your Terraform configuration:
 ```hcl
 module "spacelift_aws_integrations" {
   source = "masterpointio/spacelift/aws-integrations"
-  # Specify a specific version
+  # Set a specific version
   # version = "X.X.X"
 
   aws_integrations = {
     "prod" = {
       aws_account_id                 = "123456789012"
+      role_arn                       = "arn:aws:iam::123456789012:role/spacelift"
       duration_seconds               = 1200
       generate_credentials_in_worker = true
       labels                         = ["prod", "team:sre"]
     },
     "dev" = {
       aws_account_id                 = "210987654321"
+      role_arn                       = "arn:aws:iam::210987654321:role/spacelift"
       external_id                    = "dev-external-id"
-      space_id                       = "custom_space"
+      space_id                       = "custom-space"
     }
   }
 }
