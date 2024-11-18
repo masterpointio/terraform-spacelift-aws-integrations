@@ -1,4 +1,4 @@
-output "random_pet_name" {
-  description = "The generated random pet name"
-  value       = random_pet.template.id
+output "aws_integrations" {
+  description = "Map of AWS integration names to their IDs."
+  value       = { for name, integration in spacelift_aws_integration.default : name => integration.id }
 }
