@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0 (2024-11-19)
+
+
+### Features
+
+* initial version ([1e3ab6c](https://github.com/masterpointio/terraform-spacelift-aws-integrations/commit/1e3ab6c34ce246d3664826a7b776a53ae8911d3b))
+
 ## [0.2.0](https://github.com/masterpointio/terraform-module-template/compare/v0.1.1...v0.2.0) (2024-11-14)
 
 
