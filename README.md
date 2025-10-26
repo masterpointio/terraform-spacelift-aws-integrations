@@ -47,7 +47,9 @@ moved {
 ```
 
 **3. Run `tf plan`** (`tf` being Terraform or OpenTofu) - verify resources show as "moved" (not destroyed/created)
+
 **4. Run `tf apply`** (`tf` being Terraform or OpenTofu)
+
 **5. Remove `moved` blocks** after successful migration
 
 ---
