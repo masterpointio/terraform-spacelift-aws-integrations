@@ -50,7 +50,7 @@ moved {
 
 **4. Run `tf apply`** (`tf` being Terraform or OpenTofu)
 
-**5. Remove `moved` blocks** after successful migration
+**5. Remove `moved` blocks after successful migration**
 
 ---
 
