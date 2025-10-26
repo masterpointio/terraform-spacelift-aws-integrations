@@ -10,7 +10,7 @@
 
 ### Migration (Without Recreating Resources)
 
-If you'd like to migrate from using this module to using the `spacelift_aws_integration` resource directly without recreating resources, follow these steps:
+If you are using the same root module with existing current TF state and you'd like to migrate from using this module to using the `spacelift_aws_integration` resource directly without recreating resources, follow these steps:
 
 **1. Replace module with resources:**
 
