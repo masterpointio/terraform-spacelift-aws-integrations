@@ -9,9 +9,11 @@
 **Why?** We realized this module was such a thin wrapper around the Terraform/OpenTofu resource that for simplicity, better clarity with less abstraction, the same came be accomplished by using the resource directly in your modules.
 
 ### Migration (Without Recreating Resources)
+
 If you'd like to migrate from using this module to using the `spacelift_aws_integration` resource directly without recreating resources, follow these steps:
 
 **1. Replace module with resources:**
+
 ```hcl
 # Before
 module "spacelift_aws_integrations" {
@@ -36,6 +38,7 @@ resource "spacelift_aws_integration" "prod" {
 ```
 
 **2. Add `moved` blocks to prevent recreation:**
+
 ```hcl
 moved {
   from = module.spacelift_aws_integrations.spacelift_aws_integration.this["prod"]
