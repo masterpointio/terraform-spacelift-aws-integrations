@@ -2,11 +2,11 @@
 
 # terraform-spacelift-aws-integrations
 
-## ⚠️ ARCHIVED - IMPORTANT: Module D
+## ⚠️ ARCHIVED - IMPORTANT: Module Deprecated
 
 **This module is no longer maintained.** We recommend using the [`spacelift_aws_integration`](https://registry.terraform.io/providers/spacelift-io/spacelift/latest/docs/resources/aws_integration) resource directly instead.
 
-**Why?** We realized this module was such a thin wrapper around the Terraform/OpenTofu resource that for simplicity, better clarity with less abstraction, the same came be accomplished by using the resource directly in your modules.
+**Why?** We realized this module was such a thin wrapper around the Terraform/OpenTofu resource that for simplicity, better clarity with less abstraction, the same can be accomplished by using the resource directly in your modules.
 
 ### Migration (Without Recreating Resources)
 
