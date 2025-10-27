@@ -2,6 +2,58 @@
 
 # terraform-spacelift-aws-integrations
 
+## ⚠️ ARCHIVED - IMPORTANT: Module Deprecated
+
+**This module is no longer maintained.** We recommend using the [`spacelift_aws_integration`](https://registry.terraform.io/providers/spacelift-io/spacelift/latest/docs/resources/aws_integration) resource directly instead.
+
+**Why?** We realized this module was such a thin wrapper around the Terraform/OpenTofu resource that for simplicity, better clarity with less abstraction, the same can be accomplished by using the resource directly in your modules.
+
+### Migration (Without Recreating Resources)
+
+If you are using the same root module with existing current TF state and you'd like to migrate from using this module to using the `spacelift_aws_integration` resource directly without recreating resources, follow these steps:
+
+**1. Replace module with resources:**
+
+```hcl
+# Before
+module "spacelift_aws_integrations" {
+  source = "masterpointio/spacelift/aws-integrations"
+
+  aws_integrations = {
+    "prod" = {
+      aws_account_id = "123456789012"
+      role_arn       = "arn:aws:iam::123456789012:role/spacelift"
+      labels         = ["prod"]
+    }
+  }
+}
+
+# After
+resource "spacelift_aws_integration" "prod" {
+  name           = "prod-123456789012"
+  aws_account_id = "123456789012"
+  role_arn       = "arn:aws:iam::123456789012:role/spacelift"
+  labels         = ["prod"]
+}
+```
+
+**2. Add `moved` blocks to prevent recreation:**
+
+```hcl
+moved {
+  from = module.spacelift_aws_integrations.spacelift_aws_integration.this["prod"]
+  to   = spacelift_aws_integration.prod
+}
+```
+
+**3. Run `tf plan`** (`tf` being Terraform or OpenTofu) - verify resources show as "moved" (not destroyed/created)
+
+**4. Run `tf apply`** (`tf` being Terraform or OpenTofu)
+
+**5. Remove `moved` blocks after successful migration**
+
+---
+
 [![Release][release-badge]][latest-release]
 
 💡 Learn more about Masterpoint [below](#who-we-are-𐦂𖨆𐀪𖠋).
